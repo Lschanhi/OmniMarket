@@ -1,4 +1,4 @@
 package br.com.etec.OmniMarket.enuns;
 
-public enum TipoStatusPedido {
+public enum TipoEntregaEnum {
 }

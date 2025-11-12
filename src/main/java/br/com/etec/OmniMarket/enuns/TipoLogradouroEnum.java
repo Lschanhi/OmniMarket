@@ -1,4 +1,6 @@
 package br.com.etec.OmniMarket.enuns;
 
-public enum Categoria {
+public enum TipoLogradouroEnum
+{
+
 }

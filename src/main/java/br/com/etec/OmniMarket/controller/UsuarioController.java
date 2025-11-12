@@ -3,13 +3,13 @@ package br.com.etec.OmniMarket.controller;
 import br.com.etec.OmniMarket.entity.Endereco;
 import br.com.etec.OmniMarket.entity.Produtos;
 import br.com.etec.OmniMarket.entity.Usuario;
-import br.com.etec.OmniMarket.repository.ProdutoRepository;
+import br.com.etec.OmniMarket.repository.EnderecoRepository;
+import br.com.etec.OmniMarket.repository.ProdutosRepository;
 import br.com.etec.OmniMarket.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -20,7 +20,9 @@ public class UsuarioController
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private ProdutosRepository produtoRepository;
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     @GetMapping
     public List<Usuario> Listar()
@@ -42,12 +44,12 @@ public class UsuarioController
     }
 
     @PostMapping("/{id}/endereco")
-    public Usuario adicionarEndereco(@PathVariable int id, @RequestBody Endereco endereco) {
+    public Usuario adicionarEndereco(@PathVariable Integer id, @RequestBody Endereco endereco) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         endereco.setUsuario(usuario);
-        usuario.getEnderecos().add(endereco);
+        usuario.getEndereco().add(endereco);
         return usuarioRepository.save(usuario);
     }
 }
