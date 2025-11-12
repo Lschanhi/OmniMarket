@@ -43,4 +43,8 @@
         @JoinColumn(name = "ID_USUARIO")
         private Usuario usuario;
 
+        public void AtualizarEndereco()
+        {
+
+        }
     }
