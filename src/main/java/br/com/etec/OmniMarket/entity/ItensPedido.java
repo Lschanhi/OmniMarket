@@ -11,7 +11,7 @@ public class ItensPedido {
     @Id
     @Column(name = "ID_ITEM_PEDIDO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "ID_USUARIO")
@@ -21,9 +21,4 @@ public class ItensPedido {
     @Column(name = "ID_PEDIDO")
     private Pedidos pedido;
 
-
-    public void CalcularSubTotal()
-    {
-
-    }
 }

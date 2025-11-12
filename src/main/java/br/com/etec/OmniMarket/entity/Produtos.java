@@ -34,26 +34,4 @@ public class Produtos
     @Enumerated(EnumType.STRING)
     @Column(name = "TP_CATEGORIA")
     private CategoriaEnum categoria;
-
-
-    public void CadastrarProduto()
-    {
-
-    }
-
-    public void AlterarValorProduto()
-    {
-
-    }
-
-    public int ReduzirEstoque(int quantidade)
-    {
-
-    }
-
-    public int AdicionarEstoque(int quantidade)
-    {
-
-    }
-
 }

@@ -14,7 +14,7 @@ public class Pedidos {
     @Id
     @Column(name = "ID_PEDIDO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(name = "TP_ENTREGA")
     private Double tipoEntrega;
 
@@ -34,18 +34,4 @@ public class Pedidos {
     @Column(name = "ID_PAGAMENTO")
     private Pagamento pagamento;
 
-    public void AtualizarStatus(TipoStatusPedidoEnum status)
-    {
-
-    }
-
-    public void GerarPagamento()
-    {
-
-    }
-
-    public void VisualizarDetalhes()
-    {
-
-    }
 }

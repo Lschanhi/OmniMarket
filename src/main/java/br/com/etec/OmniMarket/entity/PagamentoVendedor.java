@@ -14,7 +14,7 @@ public class PagamentoVendedor {
     @Id
     @Column(name = "ID_PAGAMENTO_VENDEDOR")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(name = "NR_VALOR")
     private BigDecimal valor;
     @Column(name = "DT_PAGAMENTO")
@@ -28,9 +28,4 @@ public class PagamentoVendedor {
     @JoinColumn(name = "ID_PAGAMENTO")
     private Pagamento pagamento;
 
-
-    public void ResgistrarRepasse()
-    {
-
-    }
 }

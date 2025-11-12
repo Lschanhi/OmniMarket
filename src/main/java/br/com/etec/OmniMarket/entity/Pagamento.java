@@ -13,7 +13,7 @@ public class Pagamento {
     @Id
     @Column(name = "ID_PAGAMENTO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "TP_STATUS_PAGAMENTO")
@@ -26,14 +26,4 @@ public class Pagamento {
     @Column(name = "NR_FORMA_PAGAMENTO")
     private Integer nrFormaPagamento;
 
-
-    public void Realizarpagamento()
-    {
-
-    }
-
-    public void AtualizarStatus(TipoStatusPagamentoEnum status)
-    {
-
-    }
 }

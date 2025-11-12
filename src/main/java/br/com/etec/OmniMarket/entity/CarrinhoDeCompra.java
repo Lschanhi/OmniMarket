@@ -13,7 +13,7 @@ public class CarrinhoDeCompra {
     @Id
     @Column (name = "ID_CARRINHO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
 
     @OneToMany
@@ -23,27 +23,4 @@ public class CarrinhoDeCompra {
     @OneToOne
     @JoinColumn(name = "ID_USUARIO")
     private Usuario usuario;
-
-
-    public int AdicionarProdutos(Produtos p, int qtd)
-    {
-
-    }
-
-    public void RemoverProdutos()
-    {
-
-    }
-
-    public double CalcularTotal()
-    {
-
-    }
-
-    public void FinalizarCompra()
-    {
-
-    }
-
-
 }

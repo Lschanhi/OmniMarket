@@ -40,30 +40,4 @@ public class Usuario
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produtos> produtos = new ArrayList<>();
 
-
-    public void ConsultarProdutos()
-    {
-
-    }
-
-    public void ConsultarVendas()
-    {
-
-    }
-
-    public void CadastrarUsuario()
-    {
-
-    }
-
-    public void AtualizarPerfil()
-    {
-
-    }
-
-    public void AdicionarEndereco(Endereco endereco)
-    {
-
-    }
-
 }
