@@ -1,3 +1,4 @@
+//GUSTAVO E FELIPE
 package br.com.etec.OmniMarket.entity;
 
 import br.com.etec.OmniMarket.enuns.CategoriaEnum;
