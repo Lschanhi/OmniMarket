@@ -6,9 +6,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "TBL_ITENS_PEDIDOS")
+
 public class ItensPedido {
-    @Id
+   /* @Id
     @Column(name = "ID_ITEM_PEDIDO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,6 +19,6 @@ public class ItensPedido {
 
     @ManyToOne
     @Column(name = "ID_PEDIDO")
-    private Pedidos pedido;
+    private Pedidos pedido;*/
 
 }

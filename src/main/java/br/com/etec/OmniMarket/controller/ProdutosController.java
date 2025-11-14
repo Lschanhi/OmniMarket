@@ -9,6 +9,7 @@ import br.com.etec.OmniMarket.repository.ProdutosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,17 +22,6 @@ public class ProdutosController {
     private ProdutosRepository produtoRepository;
 
 
-    @GetMapping
-    public List<Produtos> listarTodos() {
-        return produtoRepository.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public Produtos buscarPorId(@PathVariable Long id) {
-        Produtos produto = produtoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
-        return produto;
-    }
 
     @PostMapping
     public Produtos cadastrarProduto(@RequestBody Produtos novoProduto) {
@@ -39,25 +29,44 @@ public class ProdutosController {
     }
 
     @PutMapping("/{id}")
-    public Produtos atualizarProduto(@PathVariable Long id, @RequestBody Produtos produtoAtualizado) {
+    public Produtos atualizarValorProduto(@PathVariable Long id, @RequestBody Produtos produtoAtualizado)
+    {
         Produtos produtoExistente = produtoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
         // Atualiza os campos desejados
-        produtoExistente.setNome(produtoAtualizado.getNome());
-        produtoExistente.setPreco(produtoAtualizado.getPreco());
-        produtoExistente.setDescricao(produtoAtualizado.getDescricao());
-        produtoExistente.setEstoque(produtoAtualizado.getEstoque());
+
+        produtoExistente.setValorProduto(produtoAtualizado.getValorProduto());
 
         return produtoRepository.save(produtoExistente);
     }
 
-    @DeleteMapping("/{id}")
-    public String deletarProduto(@PathVariable Long id) {
+    @PutMapping("/reduzir/{id}")
+    public String reduzirEstoque(@PathVariable Long id, @RequestBody Integer quantidade)
+    {
         Produtos produto = produtoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        produtoRepository.delete(produto);
-        return "Produto com ID " + id + " foi excluído com sucesso!";
+        if (produto.getEstoque() < quantidade) {
+            return "Não há estoque suficiente para reduzir";
+        }
+
+        // Reduz o estoque
+        produto.setEstoque(produto.getEstoque() - quantidade);
+
+        // Salva a alteração no banco
+        produtoRepository.save(produto);
+
+        return "Estoque do produto com ID " + id + " foi reduzido em " + quantidade + " unidade(s). Estoque atual: " + produto.getEstoque();
+    }
+
+
+    @PutMapping("/aumentar/{id}")
+    public String aumentarEstoque(@PathVariable Long id, @RequestBody Integer quantidade)
+    {
+        Produtos produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+        produto.setEstoque(produto.getEstoque() + quantidade);
+
+        return "Estoque do produto com ID " + id + " foi aumentado em " + quantidade + " unidade(s). Estoque atual: " + produto.getEstoque();
     }
 }

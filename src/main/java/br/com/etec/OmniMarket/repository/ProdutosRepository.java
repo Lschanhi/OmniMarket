@@ -1,9 +1,13 @@
 package br.com.etec.OmniMarket.repository;
 
 import br.com.etec.OmniMarket.entity.Produtos;
+import br.com.etec.OmniMarket.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProdutosRepository extends JpaRepository<Produtos, Integer>
+import java.util.List;
+
+public interface ProdutosRepository extends JpaRepository<Produtos, Long>
 {
+    List<Produtos> findByUsuario(Usuario usuario);
 
 }

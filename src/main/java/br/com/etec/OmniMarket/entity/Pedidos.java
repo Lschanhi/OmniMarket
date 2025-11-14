@@ -9,9 +9,9 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@Entity(name = "TBL_PEDIDOS")
+
 public class Pedidos {
-    @Id
+    /*@Id
     @Column(name = "ID_PEDIDO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,4 +34,16 @@ public class Pedidos {
     @Column(name = "ID_PAGAMENTO")
     private Pagamento pagamento;
 
+    @Override
+    public String toString() {
+        return "Pedidos{" +
+                "id=" + id +
+                ", tipoEntrega=" + tipoEntrega +
+                ", tipoStatusPedido=" + tipoStatusPedido +
+                ", valorTotal=" + valorTotal +
+                ", rastreio=" + rastreio +
+                ", carrinho=" + carrinho +
+                ", pagamento=" + pagamento +
+                '}';
+    }*/
 }

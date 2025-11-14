@@ -25,26 +25,27 @@ public class UsuarioController
     private EnderecoRepository enderecoRepository;
 
     @GetMapping
-    public List<Usuario> Listar()
+    public List<Usuario> listar()
     {
         return usuarioRepository.findAll();
     }
-    public List<Produtos> ListarProdutos()
+    public List<Produtos> listarProdutos()
     {
         return produtoRepository.findAll();
     }
-    @PostMapping("/{id}/produtos")
-    public Produtos CadastrarProdutos(@PathVariable Integer id, @RequestBody Produtos produto)
+
+
+    @GetMapping("/{id}/produtos")
+    public List<Produtos> listarProdutos(@PathVariable Long id)
     {
        Usuario usuario = usuarioRepository.findById(id).orElseThrow(()-> new RuntimeException("Usuario Não Encontrado"));
 
-        produto.setUsuario(usuario);
+     return produtoRepository.findByUsuario(usuario);
 
-        return produtoRepository.save(produto);
     }
 
     @PostMapping("/{id}/endereco")
-    public Usuario adicionarEndereco(@PathVariable Integer id, @RequestBody Endereco endereco) {
+    public Usuario adicionarEndereco(@PathVariable Long id, @RequestBody Endereco endereco) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
@@ -52,4 +53,29 @@ public class UsuarioController
         usuario.getEndereco().add(endereco);
         return usuarioRepository.save(usuario);
     }
+
+    @PutMapping("/editar/{id}")
+    public Usuario alterarPerfil(@PathVariable Long id, @RequestBody Usuario usuarioAlterado)
+    {
+        Usuario usuarioExistente = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        usuarioExistente.setNome(usuarioAlterado.getNome());
+        usuarioExistente.setSobrenome(usuarioAlterado.getSobrenome());
+        usuarioExistente.setNomeFantasia(usuarioAlterado.getNomeFantasia());
+        usuarioExistente.setEmail(usuarioAlterado.getEmail());
+        usuarioExistente.setSenha(usuarioAlterado.getSenha());
+
+        return usuarioRepository.save(usuarioExistente);
+
+    }
+
+@DeleteMapping("desativar/{id}")
+    public  Usuario desativarPerfil(@PathVariable Long id)
+{
+    Usuario usuario = usuarioRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    return  usuarioRepository.deleteByUsuario(usuario);
+}
+
 }

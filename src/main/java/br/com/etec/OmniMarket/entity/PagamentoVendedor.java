@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Entity(name = "TBL_PAGAAMENTO_VENDEDOR")
+
 public class PagamentoVendedor {
-    @Id
+ /*   @Id
     @Column(name = "ID_PAGAMENTO_VENDEDOR")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,6 +26,6 @@ public class PagamentoVendedor {
 
     @OneToOne
     @JoinColumn(name = "ID_PAGAMENTO")
-    private Pagamento pagamento;
+    private Pagamento pagamento;*/
 
 }

@@ -8,9 +8,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "TBL_PAGAMENTO")
+
 public class Pagamento {
-    @Id
+  /*  @Id
     @Column(name = "ID_PAGAMENTO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +24,6 @@ public class Pagamento {
     private FormaPagamentoEnum formaPagamento;
 
     @Column(name = "NR_FORMA_PAGAMENTO")
-    private Integer nrFormaPagamento;
+    private Integer nrFormaPagamento;*/
 
 }

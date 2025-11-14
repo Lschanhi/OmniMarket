@@ -8,9 +8,9 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@Entity(name = "TBL_ITENS_CARRINHO")
+
 public class ItensCarrinho {
-    @Id
+ /*  @Id
     @Column(name = "ID_ITENS_CARRINHO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,6 +21,6 @@ public class ItensCarrinho {
 
     @ManyToOne
     @JoinColumn(name = "ID_PRODUTO")
-    private Produtos produto;
+    private Produtos produto;*/
 
 }
